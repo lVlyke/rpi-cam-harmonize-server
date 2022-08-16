@@ -1,0 +1,7 @@
+[submodule "RPi_Cam_Web_Interface"]
+	path = RPi_Cam_Web_Interface
+	url = https://github.com/silvanmelchior/RPi_Cam_Web_Interface.git
+[submodule "HarmonizeProject"]
+	path = HarmonizeProject
+	url = https://github.com/lVlyke/HarmonizeProject.git
+	branch = combined-changes

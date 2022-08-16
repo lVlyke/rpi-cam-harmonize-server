@@ -1,0 +1,7 @@
+#User buttons definitions
+#maximum of twelve buttons
+#button name,macro,button styles,other attributes
+
+Start Light Sync,start_hue_sync.sh,btn btn-success btn-lg,style="width:20%" autofocus
+Stop Light Sync,stop_hue_sync.sh,btn btn-warning btn-lg,style="width:20%" autofocus
+Kill Sync Session,kill_hue_sync.sh,btn btn-danger btn-lg,style="width:20%" autofocus
