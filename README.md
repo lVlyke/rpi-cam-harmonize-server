@@ -10,7 +10,7 @@ This project allows you to use your Raspberry Pi + Camera module (or equivalent)
 
 ## Requirements
 
-* Raspberry Pi running Raspberry Pi OS (tested with 2022-04-04, **32-bit only, arm64 not currently supported**)
+* Raspberry Pi running Raspberry Pi OS (desktop or lite, tested ver. 2022-04-04 - **32-bit only, arm64 not currently supported**)
 * Raspberry Pi camera module (or equivalent)
 * Philips Hue Bridge with compatible lights
 
@@ -53,10 +53,15 @@ picam_group_id="" # (Optional) Add your entertainment group ID here
 ```
 
 **picam_stream_src** - The camera stream URL. This does not need to be changed unless you modified any server path settings during installation.
+
 **picam_stream_fps** - The number of frames per second the camera stream URL will update. This can be increased/decreased depending on your hardware. Defaults to 25.
+
 **picam_stream_init_delay** - The camera stream init delay. This can be increased if you are receiving `rgbframe` errors when starting light sync.
+
 **picam_log_file** - The log file. Defaults to `/tmp/rpi-cam-harmonize-server.log`.
+
 **picam_bridge_ip** - (Optional) The IP address of your Hue Bridge. This is only needed when multiple Hue Bridges are on a single network.
+
 **picam_group_id** - (Optional) The group ID of your Hue entertainment group. This is only needed when you have multiple entertainment groups defined.
 
 ## Running
