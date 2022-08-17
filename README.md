@@ -31,13 +31,7 @@ cd ./rpi-cam-harmonize-server
 ./install.sh
 ```
 
-During the installation you will be presented with a server settings configuration screen. These settings should usually be left to their defaults by pressing "Enter".
-
-*img*
-
-You will then be asked if you'd like to start the server. Simply answer "No" for now.
-
-*img*
+This may take a while dependning on your hardware.
 
 ## Configuration
 
@@ -52,7 +46,7 @@ picam_bridge_ip="" # (Optional) Add your Hue bridge IP here
 picam_group_id="" # (Optional) Add your entertainment group ID here
 ```
 
-**picam_stream_src** - The camera stream URL. This does not need to be changed unless you modified any server path settings during installation.
+**picam_stream_src** - The camera stream URL. This does not normally need to be changed.
 
 **picam_stream_fps** - The number of frames per second the camera stream URL will update. This can be increased/decreased depending on your hardware. Defaults to 25.
 
@@ -72,17 +66,15 @@ By default the server will start automatically when booting your Raspberry Pi. T
 start.sh
 ```
 
-This will launch the server GUI. If you did not modify the default server path settings during installation, you can access it at `http://<rpi_ip_addr>:80/html`.
-
-If your camera stream is slightly off alignment or needs to be cropped, you can adjust these and many other camera settings through the GUI until the stream output matches what you expect. See the [RPi-Cam-Web-Interface wiki](https://elinux.org/RPi-Cam-Web-Interface) for more information about configuring these values.
-
-Once you can see the server GUI and verify your camera feed is working, you can start the light sync. To do this, simply press the `Start Light Sync` button:
+This will launch the web server. The GUI can be accessed via your web browser at your Raspberry Pi's IP address and/or hostname.
 
 *img*
 
-Depending on your hardware, this may take a minute.
+If your camera stream is slightly off alignment or needs to be cropped, you can adjust these and many other camera settings through the GUI until the stream output matches what you expect. See the [RPi-Cam-Web-Interface wiki](https://elinux.org/RPi-Cam-Web-Interface) for more information about configuring these values.
 
-**NOTE:** When starting light sync for the first time, you will need to give your Raspberry Pi permission to control your lights. You can use the following command to watch the server output, which will prompt you to press the button on your Hue Bridge when ready:
+Once you can see the server GUI and verify your camera feed is working, you can start the light sync. To do this, simply press the `Start Light Sync` button. This may take a while depending on your hardware.
+
+**NOTE:** When starting the light sync for the first time, you will need to give your Raspberry Pi permission to control your lights. You can use the following command to watch the server output, which will prompt you to press the button on your Hue Bridge when ready:
 
 ```bash
 tail -f /tmp/rpi-cam-harmonize-server.log

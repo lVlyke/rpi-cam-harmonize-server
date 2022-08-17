@@ -1,10 +1,12 @@
 #!/bin/bash
 
-sudo mkdir -p /var/www/HarmonizeProject
-sudo cp -rf ./HarmonizeProject/* /var/www/HarmonizeProject
-sudo chgrp www-data /var/www/HarmonizeProject
-sudo chmod g+rwx /var/www/HarmonizeProject
+server_home="/var/www"
 
-sudo cp ./.syncrc /var/www/.syncrc
-sudo mkdir -p /var/www/macros
-sudo cp -rf ./www/* /var/www
+sudo mkdir -p "${server_home}/HarmonizeProject"
+sudo cp -rf ./HarmonizeProject/* "${server_home}/HarmonizeProject"
+sudo chgrp www-data "${server_home}/HarmonizeProject"
+sudo chmod g+rwx "${server_home}/HarmonizeProject"
+
+sudo cp ./.syncrc "${server_home}/.syncrc"
+sudo mkdir -p "${server_home}/macros"
+sudo cp -rf ./www/* "${server_home}"

@@ -2,7 +2,8 @@
 
 # Install RPi-Cam-Web-Interface
 cd ./RPi_Cam_Web_Interface
-./install.sh
+echo -e 'rpicamdir=""\nwebserver="apache"\nwebport="80"\nuser=""\nwebpasswd=""\nautostart="yes"\njpglink="no"\nphpversion="7.4"' > ./config.txt
+./install.sh q
 cd ../
 
 # Install HarmonizeProject deps
