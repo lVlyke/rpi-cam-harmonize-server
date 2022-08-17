@@ -1,5 +1,5 @@
 #!/bin/bash
-picam_stream_src="http://localhost:80/html/cam_pic_new.php?pDelay="
+picam_stream_src="http://localhost/cam_pic_new.php?pDelay="
 picam_stream_fps=25
 picam_stream_init_delay=1.5
 picam_log_file="/tmp/rpi-cam-harmonize-server.log"
