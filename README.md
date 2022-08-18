@@ -18,10 +18,10 @@ This project allows you to use your Raspberry Pi + Camera module (or equivalent)
 
 Before starting, **please make sure that the legacy camera interface has been enabled on your Raspberry Pi**. You can do this by running `sudo raspi-config` and enabling the camera under `Interface Options`.
 
-First, clone this project onto your Pi (with submodules):
+First, clone the project onto your Pi:
 
 ```bash
-git clone --recurse-submodules https://github.com/lVlyke/rpi-cam-harmonize-server.git
+git clone https://github.com/lVlyke/rpi-cam-harmonize-server.git
 ```
 
 Next, `cd` into the newly created directory and run the `install` script:
@@ -31,7 +31,7 @@ cd ./rpi-cam-harmonize-server
 ./install.sh
 ```
 
-This may take a while dependning on your hardware.
+This may take a while depending on your hardware.
 
 ## Configuration
 
@@ -68,10 +68,16 @@ picam_group_id="" # (Optional) Add your entertainment group ID here
 
 ### Starting the web server
 
+If you changed any settings in `.syncrc`, make sure to run `apply.sh`:
+
+```bash
+./apply.sh
+```
+
 By default, the server will start automatically when booting your Raspberry Pi. To start or stop the server manually, you can use the included `start.sh` and `stop.sh` scripts:
 
 ```bash
-start.sh
+./start.sh
 ```
 
 This will launch the web server. The GUI can be accessed via your web browser at your Raspberry Pi's IP address and/or hostname:
@@ -94,9 +100,17 @@ If everything worked correctly, you should now see your lights being synced to t
 
 ### Stopping light sync
 
-To stop the light sync, simply press the `Stop Light Sync` button. The web server can be turned off by running the `stop.sh` command.
+To stop the light sync, simply press the `Stop Light Sync` button. The web server can be turned off by running the `stop.sh` command:
+
+```bash
+./stop.sh
+```
 
 ## Troubleshooting
+
+### My camera does not show up on the server GUI
+
+Make sure you have enabled the legacy camera interface on your Raspberry Pi. You can do this by running `sudo raspi-config` and enabling the camera under `Interface Options`.
 
 ### Nothing happens when I click "Start Light Sync"
 

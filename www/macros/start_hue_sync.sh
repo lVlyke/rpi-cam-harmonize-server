@@ -16,7 +16,7 @@ fi
 
 # Compute the launch args for Harmonize from the specified config values in `.syncrc`:
 frame_delay="$(printf %.0f $(bc -l <<< "1 / ${picam_stream_fps} * 1000000"))"
-launch_args="cd /var/www/HarmonizeProject/ && python3 ./harmonize.py --stream_filename ${picam_stream_src}${frame_delay}"
+launch_args="cd /var/www/HarmonizeProject/ && python3 -u ./harmonize.py --stream_filename ${picam_stream_src}${frame_delay}"
 
 if [[ -n "${picam_bridge_ip}" ]]
 then launch_args="${launch_args} --bridgeip ${picam_bridge_ip}"
@@ -27,7 +27,7 @@ then launch_args="${launch_args} --groupid ${picam_group_id}"
 fi
 
 if [[ -n "${picam_stream_init_delay}" ]]
-then launch_args="${launch_args} --cam_init_delay ${picam_stream_init_delay}"
+then launch_args="${launch_args} --video_wait_time ${picam_stream_init_delay}"
 fi
 
 launch_args="${launch_args}; exec bash"
