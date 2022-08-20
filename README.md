@@ -100,7 +100,9 @@ If everything worked correctly, you should now see your lights being synced to t
 
 ### Stopping light sync
 
-To stop the light sync, simply press the `Stop Light Sync` button. The web server can be turned off by running the `stop.sh` command:
+To stop the light sync, simply press the `Stop Light Sync` button.
+
+The web server can be turned off by running the `stop.sh` command:
 
 ```bash
 ./stop.sh
