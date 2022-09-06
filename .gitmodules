@@ -3,5 +3,4 @@
 	url = https://github.com/silvanmelchior/RPi_Cam_Web_Interface.git
 [submodule "HarmonizeProject"]
 	path = HarmonizeProject
-	url = https://github.com/lVlyke/HarmonizeProject.git
-	branch = combined-changes
+	url = https://github.com/MCPCapital/HarmonizeProject.git
