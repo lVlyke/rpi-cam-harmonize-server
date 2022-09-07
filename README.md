@@ -1,12 +1,12 @@
 # rpi-cam-harmonize-server
 
-Turns your Raspberry Pi + Camera into a server that syncs your Philips Hue-compatible lights to your camera.
+Turn any Raspberry Pi + Camera module into a web server that syncs your Philips Hue-compatible lights in real time using [HarmonizeProject](https://github.com/MCPCapital/HarmonizeProject) and [RPi_Cam_Web_Interface](https://github.com/silvanmelchior/RPi_Cam_Web_Interface).
 
 ![Server GUI](/docs/server_gui.png)
 
 # About
 
-This project allows you to use your Raspberry Pi + Camera module (or equivalent) as a highly configurable web server that will sync your Philips Hue lights to your camera. This is achieved by combining together the capabilities of [RPi_Cam_Web_Interface](https://github.com/silvanmelchior/RPi_Cam_Web_Interface) and [HarmonizeProject](https://github.com/MCPCapital/HarmonizeProject).
+A collection of shell scripts for the Raspberry Pi that turn it into a highly configurable web server with GUI that will sync your Philips Hue lights to the Pi camera's video stream in real time. This is achieved by combining together the capabilities of [HarmonizeProject](https://github.com/MCPCapital/HarmonizeProject) and [RPi_Cam_Web_Interface](https://github.com/silvanmelchior/RPi_Cam_Web_Interface).
 
 ## Requirements
 
@@ -134,4 +134,4 @@ You can also check `top` to make sure no other background processes are starving
 
 ## Special Thanks
 
-Special thanks to the authors and contributors to [RPi_Cam_Web_Interface](https://github.com/silvanmelchior/RPi_Cam_Web_Interface) and [HarmonizeProject](https://github.com/MCPCapital/HarmonizeProject). This project would not be possible without either of these excellent projects!
+Special thanks to the authors and contributors to [RPi_Cam_Web_Interface](https://github.com/silvanmelchior/RPi_Cam_Web_Interface) and [HarmonizeProject](https://github.com/MCPCapital/HarmonizeProject). This would not exist without either of these excellent projects!
