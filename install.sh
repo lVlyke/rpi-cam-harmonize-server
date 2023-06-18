@@ -3,16 +3,9 @@
 # Pull all submodules
 git submodule update --init --recursive
 
-# Make sure PHP 7.3 is available
-sudo apt-get update
-sudo apt-get install -y curl lsb-release
-curl https://packages.sury.org/php/apt.gpg | sudo tee /usr/share/keyrings/suryphp-archive-keyring.gpg >/dev/null
-echo "deb [signed-by=/usr/share/keyrings/suryphp-archive-keyring.gpg] https://packages.sury.org/php/ $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/sury-php.list
-sudo apt-get update
-
 # Install RPi-Cam-Web-Interface
 cd ./RPi_Cam_Web_Interface
-echo -e 'rpicamdir=""\nwebserver="apache"\nwebport="80"\nuser=""\nwebpasswd=""\nautostart="yes"\njpglink="no"\nphpversion="7.3"' > ./config.txt
+echo -e 'rpicamdir=""\nwebserver="apache"\nwebport="80"\nuser=""\nwebpasswd=""\nautostart="yes"\njpglink="no"\nphpversion="7.4"' > ./config.txt
 ./install.sh q
 cd ../
 
