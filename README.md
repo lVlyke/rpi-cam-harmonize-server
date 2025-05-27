@@ -1,6 +1,6 @@
 # rpi-cam-harmonize-server
 
-Turn any Raspberry Pi + Camera module into a web server that syncs your Philips Hue-compatible lights in real time using [HarmonizeProject](https://github.com/MCPCapital/HarmonizeProject) and [RPi_Cam_Web_Interface](https://github.com/silvanmelchior/RPi_Cam_Web_Interface).
+Turns any Raspberry Pi + Camera module into a self-contained real-time light syncing solution for your Philips Hue lights, including a remotely accessible web interface. Powered by [HarmonizeProject](https://github.com/MCPCapital/HarmonizeProject) and [RPi_Cam_Web_Interface](https://github.com/silvanmelchior/RPi_Cam_Web_Interface).
 
 ![Server GUI](/docs/server_gui.png)
 
@@ -10,13 +10,17 @@ A collection of shell scripts for the Raspberry Pi that turn it into a highly co
 
 ## Requirements
 
-* Raspberry Pi running Raspberry Pi OS (desktop or lite, tested on RPi Zero and 3B+ running Buster - **32-bit OS only, arm64 not currently supported**)
+> [!IMPORTANT]
+> This project uses the legacy camera module and currently works only with the legacy version of Raspberry Pi OS (Bullseye or earlier). If you are using the Rasperry Pi Imager, select **Raspberry Pi OS (Legacy, 32-bit) Lite**.
+
+* Raspberry Pi running Raspberry Pi OS (desktop or lite, tested on RPi Zero and 3B+ running **legacy OS version (Bullseye or earlier) - 32-bit OS only, arm64 not currently supported)**
 * Raspberry Pi camera module (or equivalent)
 * Philips Hue Bridge with compatible lights
 
 ## Installation
 
-Before starting, **please make sure that the legacy camera interface has been enabled on your Raspberry Pi**. You can do this by running `sudo raspi-config` and enabling the camera under `Interface Options`.
+> [!IMPORTANT]
+> Before starting, **ensure that the legacy camera interface has been enabled on your Raspberry Pi**. You can do this by running `sudo raspi-config` and enabling the legacy camera module under `Interface Options`.
 
 First, clone the project onto your Pi:
 
