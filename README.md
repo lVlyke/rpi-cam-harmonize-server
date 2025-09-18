@@ -1,6 +1,6 @@
 # rpi-cam-harmonize-server
 
-Turns any Raspberry Pi + Camera module into a self-contained real-time light syncing solution for your Philips Hue lights, including a remotely accessible web interface. Powered by [HarmonizeProject](https://github.com/MCPCapital/HarmonizeProject) and [RPi_Cam_Web_Interface](https://github.com/silvanmelchior/RPi_Cam_Web_Interface).
+Turn any Raspberry Pi + Camera module into a self-contained real-time light syncing solution for your Philips Hue lights, including a remotely accessible web interface. Powered by [HarmonizeProject](https://github.com/MCPCapital/HarmonizeProject) and [RPi_Cam_Web_Interface](https://github.com/silvanmelchior/RPi_Cam_Web_Interface).
 
 ![Server GUI](/docs/server_gui.png)
 
@@ -39,11 +39,7 @@ This may take a while depending on your hardware.
 
 ## Configuration
 
-All settings are configured via the `.syncrc` file.
-
-**If you modify any of the settings in `.syncrc`, you must run the `apply.sh` script afterward in order for your changes to take effect.**
-
-Below are all settings in `.syncrc` along with their default values:
+All settings are configured via the `.syncrc` file. These are the available settings and their default values:
 
 ```bash
 picam_stream_src="http://localhost/cam_pic_new.php?pDelay="
@@ -66,22 +62,14 @@ picam_group_id="" # (Optional) Add your entertainment group ID here
 
 **picam_group_id** - (Optional) The group ID of your Hue entertainment group. This is only needed when you have multiple entertainment groups defined.
 
-**If you modify any of the settings in `.syncrc`, you must run the `apply.sh` script afterward in order for your changes to take effect.**
-
 ## Running
 
 ### Starting the web server
 
-If you changed any settings in `.syncrc`, make sure to run `apply.sh`:
+By default, the server will start automatically when booting your Raspberry Pi. To start or stop the server manually, you can use the included `start_server.sh` and `stop_server.sh` scripts:
 
 ```bash
-./apply.sh
-```
-
-By default, the server will start automatically when booting your Raspberry Pi. To start or stop the server manually, you can use the included `start.sh` and `stop.sh` scripts:
-
-```bash
-./start.sh
+./start_server.sh
 ```
 
 This will launch the web server. The GUI can be accessed via your web browser at your Raspberry Pi's IP address and/or hostname:
@@ -106,7 +94,7 @@ If everything worked correctly, you should now see your lights being synced to t
 
 To stop the light sync, simply press the `Stop Light Sync` button.
 
-The web server can be turned off by running the `stop.sh` command:
+The web server can be turned off by running the `stop_server.sh` command:
 
 ```bash
 ./stop.sh
@@ -124,7 +112,7 @@ The first thing you should do is check the log, which by default is saved at `/t
 
 If the log shows `ERROR: Button press not detected, exiting application`, you need to make sure you press the button on the Hue Bridge at the correct time during first start. The easiest way to do this is to run `tail -f /tmp/rpi-cam-harmonize-server.log` after clicking "Start Light Sync".
 
-If the log shows an error about `w`, `h`, `rgbframe` or other variables, try increasing the `picam_stream_init_delay` value in `.syncrc` and then run `apply.sh` and try again.
+If the log shows an error about `w`, `h`, `rgbframe` or other variables, try increasing the `picam_stream_init_delay` value in `.syncrc` and try again.
 
 ### Light sync is slow/lagging behind camera stream
 
