@@ -6,36 +6,93 @@ Turn any Raspberry Pi + Camera module into a self-contained real-time light sync
 
 # About
 
-A collection of shell scripts for the Raspberry Pi that turn it into a highly configurable web server with GUI that will sync your Philips Hue lights to the Pi camera's video stream in real time. This is achieved by combining together the capabilities of [HarmonizeProject](https://github.com/MCPCapital/HarmonizeProject) and [RPi_Cam_Web_Interface](https://github.com/silvanmelchior/RPi_Cam_Web_Interface).
+A collection of shell scripts that turns a Raspberry Pi (or any machine running Debian) into a highly configurable web server with GUI that will sync your Philips Hue lights to a camera's video stream in real time.
 
 ## Requirements
 
-> [!IMPORTANT]
-> This project uses the legacy camera module and currently works only with the legacy version of Raspberry Pi OS (Bullseye or earlier). If you are using the Rasperry Pi Imager, select **Raspberry Pi OS (Legacy, 32-bit) Lite**.
-
-* Raspberry Pi running Raspberry Pi OS (desktop or lite, tested on RPi Zero and 3B+ running **legacy OS version (Bullseye or earlier) - 32-bit OS only, arm64 not currently supported)**
-* Raspberry Pi camera module (or equivalent)
 * Philips Hue Bridge with compatible lights
+* A device running Debian (such as a Rasperry Pi).
+* A compatible camera that supports MJPEG streaming (see below).
+
+### Camera requirements
+
+#### Raspberry Pi
+Raspberry Pi camera module (or equivalent).
+
+> [!IMPORTANT]
+> You must enable the legacy camera module which currently only works with the legacy version of Raspberry Pi OS (Bullseye or earlier). If you are using the Rasperry Pi Imager, select **Raspberry Pi OS (Legacy, 32-bit) Lite**.
+
+#### Other devices
+Any camera or device that supports sending an MJPEG stream over HTTP.
 
 ## Installation
 
 > [!IMPORTANT]
 > Before starting, **ensure that the legacy camera interface has been enabled on your Raspberry Pi**. You can do this by running `sudo raspi-config` and enabling the legacy camera module under `Interface Options`.
 
-First, clone the project onto your Pi:
+This project can be installed two different ways:
+- **All-in-one installation**: A single Raspberry Pi hosts the camera server and runs the light sync. A Raspberry Pi with a camera module is required.
+- **Separate client and server installation:** The client device handles syncing the lights to the camera. The server is a separate device, such as a Raspberry Pi + camera, or any MJPEG stream source.
+
+### Option 1: All-in-one installation
+
+Clone the project onto your machine:
 
 ```bash
 git clone https://github.com/lVlyke/rpi-cam-harmonize-server.git
 ```
 
-Next, `cd` into the newly created directory and run the `install` script:
+Next, `cd` into the newly created directory.
 
 ```bash
 cd ./rpi-cam-harmonize-server
-./install.sh
+```
+
+Run the `install_all.sh` script:
+
+```bash
+./install_all.sh
 ```
 
 This may take a while depending on your hardware.
+
+Finally, update your [**settings**](#configuration) as needed.
+
+### Option 2: Separate client and server installation
+
+#### Client
+
+Clone the project onto your client machine:
+
+```bash
+git clone https://github.com/lVlyke/rpi-cam-harmonize-server.git
+```
+
+Next, `cd` into the newly created directory.
+
+```bash
+cd ./rpi-cam-harmonize-server
+```
+
+Run the `install_client.sh` script:
+
+```bash
+./install_client.sh
+```
+This may take a while depending on your hardware.
+
+#### Server
+
+> [!IMPORTANT]
+> Your camera source (server) can be either a Raspberry Pi + camera or a MJPEG stream. The web GUI is only available if using a Raspberry Pi as the camera server.
+
+If using a MJPEG camera stream source, proceed to [**Configuration**](#configuration).
+
+If using a Rasperry Pi + camera as the camera stream source (server), clone the project onto the Pi server and run the `install_server.sh` script:
+
+```bash
+./install_server.sh
+```
 
 ## Configuration
 
@@ -50,7 +107,7 @@ picam_bridge_ip="" # (Optional) Add your Hue bridge IP here
 picam_group_id="" # (Optional) Add your entertainment group ID here
 ```
 
-**picam_stream_src** - The camera stream URL. This does not normally need to be changed.
+**picam_stream_src** - The camera stream URL. Leave unchanged for all-in-one installation. Set to the server's camera video stream URL if using a remote server.
 
 **picam_stream_fps** - The number of frames per second the camera stream URL will update. This can be increased/decreased depending on your hardware. Defaults to 25.
 
@@ -61,6 +118,26 @@ picam_group_id="" # (Optional) Add your entertainment group ID here
 **picam_bridge_ip** - (Optional) The IP address of your Hue Bridge. This is only needed when multiple Hue Bridges are on a single network.
 
 **picam_group_id** - (Optional) The group ID of your Hue entertainment group. This is only needed when you have multiple entertainment groups defined.
+
+The following properties are only applicable for a remote server installation. **Leave these unchanged for all-in-one and client installations**.
+
+```bash
+picam_client_host=""
+picam_client_port="22"
+picam_client_keyfile=""
+picam_client_user="syncuser"
+picam_client_home="/rpi-cam-harmonize-server"
+```
+
+**picam_client_host** - The host/IP of the client machine.
+
+**picam_client_port** - The port of the client machine for SSH.
+
+**picam_client_keyfile** - Path to the SSH keyfile to use.
+
+**picam_client_user** - Name of the user to use on the client machine.
+
+**picam_client_home** - The project directory path on the client machine.
 
 ## Running
 
