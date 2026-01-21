@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Load config values from `.syncrc`
-source /var/www/.syncrc 
+source .syncrc 
 
 # Initialize the log file:
 rm -f "${picam_log_file}"
@@ -16,7 +16,7 @@ fi
 
 # Compute the launch args for Harmonize from the specified config values in `.syncrc`:
 frame_delay="$(printf %.0f $(bc -l <<< "1 / ${picam_stream_fps} * 1000000"))"
-launch_args="cd /var/www/HarmonizeProject/ && python3 -u ./harmonize.py --stream_filename ${picam_stream_src}${frame_delay}"
+launch_args="python3 -u $(dirname "$0")/HarmonizeProject/harmonize.py --stream_filename ${picam_stream_src}${frame_delay}"
 
 if [[ -n "${picam_bridge_ip}" ]]
 then launch_args="${launch_args} --bridgeip ${picam_bridge_ip}"
